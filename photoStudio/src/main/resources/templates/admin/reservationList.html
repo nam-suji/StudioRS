@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/aheader :: aheader"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/abodyHeader :: abodyHeader"/>
+    <div>
+        <div  th:if="${session.id=='1'}">
+            <form th:object="${reservationSearch}" class="form-inline">
+                <!--<div class="form-group mb-2">
+                    <input type="text" th:field="*{memberName}" class="form-control"
+                           placeholder="회원명"/>
+                </div>-->
+                <div class="form-group mx-sm-1 mb-2">
+                    <select th:field="*{inputStatus}" class="form-control">
+                        <option value="">입금상태</option>
+                        <option th:each="status : ${T(photo.photoStudio.domain.InputStatus).values()}"
+                                th:value="${status}"
+                                th:text="${status}">option
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </form>
+        </div>
+        <div th:if="${session.id == '1'}">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>상품명</th>
+                    <th>가격</th>
+                    <th>예약 날짜</th>
+                    <th>예약 시간</th>
+                    <th>입금 이름</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.item.name}"></td>
+                    <td th:text="${reservation.item.price}"></td>
+                    <td th:text="${reservation.reservationDate}"></td>
+                    <td th:text="${reservation.reservationTime}"></td>
+                    <td th:text="${reservation.inputName}"></td>
+                    <td>
+                        <a th:if="${reservation.inputStatus.name() == 'INPUT_X'}" href="#"
+                           th:href="'javascript:checkInput('+${reservation.id}+')'"
+                           class="btn btn-danger font-weight-bold">미입금</a>
+                        <p th:if="${reservation.inputStatus.name() == 'INPUT_O'}" class="btn btn-primary font-weight-bolder" style="pointer-events: none">입금</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div th:replace="fragments/afooter :: afooter"/>
+</div> <!-- /container -->
+</body>
+<script>
+    function checkInput(id) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/admin/reservations/" + id + "/input0");
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+</html>

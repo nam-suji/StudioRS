@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"><!--JSP의 include-->
+    <title>Studio RS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <div class="row">
+        <div class="col-xl">
+            <img src="/img/studiomain.jpg" class="img-thumbnail" alt="main img">
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col-lg col-md col-sm">
+            <div class="m-4 text-center">
+                <h2>About Our Studio</h2>
+            </div>
+            <div class="m-4 border-bottom w-100"></div>
+            <div class="m-4 text-center ">
+                <h6>
+                    <small>
+                    <!--저희 사진관은 고객의 만족도를 최우선으로 합니다.<br/><br/>-->
+                        저희 사이트는 고객의 만족도를 최우선으로 합니다.<br/><br/> <!--시연 끝나고 삭제-->
+                        원하는 요구사항을 정확히 말해주시면 그에 맞게 최상의 결과로 보답하겠습니다.<br/><br/>
+                        전화로 얘기하실 내용이 있으시면 아래로 전화 주시면 감사드리겠습니다.<br/><br/>
+                        T. 054-854-1234
+                    </small>
+                </h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

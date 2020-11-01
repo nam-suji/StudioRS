@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/aheader :: aheader"><!--JSP의 include-->
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+
+    <div th:replace="fragments/abodyHeader :: abodyHeader" />
+
+    <div class="jumbotron" th:if="${session.id==null}">
+        <h2 class="m-4"><span class="font-weight-bold">로그인이 필요합니다.</span><br/></h2>
+
+        <p class="m-4">
+            <a class="btn btn-lg btn-secondary" th:if="${session.id==null}" href="/admin/login">로그인</a>
+        </p>
+    </div>
+
+    <div class="jumbotron text-center" th:if="${session.id=='1'}" >
+        <h1>Studio RS</h1>
+        <p class="lead">회원 기능</p>
+        <p>
+            <a class="btn btn-lg btn-info" href="/admin/members">회원 목록</a>
+            <a class="btn btn-lg btn-info" href="/admin/reservations">예약 목록</a>
+        </p>
+        <p class="lead">상품 기능</p>
+        <p>
+            <a class="btn btn-lg btn-dark" href="/admin/items/new">상품 등록</a>
+            <a class="btn btn-lg btn-dark" href="/admin/items">상품 목록</a>
+        </p>
+        <p class="lead"><br/> </p>
+        <p>
+            <a class="btn btn-lg btn-secondary" th:if="${session.id==null}" href="/admin/login">로그인</a>
+            <a class="btn btn-lg btn-secondary" th:if="${session.id!=null}" href="/admin/logout">로그아웃</a>
+        </p>
+    </div>
+
+    <div th:replace="fragments/afooter :: afooter" />
+</div> <!-- /container -->
+</body>
+</html>

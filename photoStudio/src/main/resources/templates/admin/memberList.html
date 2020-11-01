@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/aheader :: aheader" />
+<body>
+<div class="container">
+    <div th:replace="fragments/abodyHeader :: abodyHeader" />
+    <div>
+        <table class="table table-striped"  th:if="${session.id=='1'}">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이메일</th>
+                <th>이름</th>
+                <th>전화번호</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td th:text="${member.id}"></td>
+                <td th:text="${member.email}"></td>
+                <td th:text="${member.name}"></td>
+                <td th:text="${member.phone}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/afooter :: afooter" />
+</div> <!-- /container -->
+</body>
+</html>

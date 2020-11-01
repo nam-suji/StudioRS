@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="my-3">
+    <form th:object="${form}" method="post">
+        <!-- id -->
+        <div class="form-group">
+            <input type="text" th:field="*{title}" class="form-control"
+                   placeholder="제목을 입력하세요" readonly>
+        </div>
+        <div class="form-group">
+            <textarea type="text" cols="80" rows="20" th:field="*{content}" class="form-control"
+                      placeholder="내용을 입력하세요" readonly></textarea>
+        </div>
+<!--        <button type="submit" th:if="${session.id=='1'}" class="btn btn-primary" onclick="location.href='/notice/{communityId}/edit'">수정</button>-->
+        <a href="#" th:if="${session.id=='1'}" th:href="@{/notice/{communityId}/edit (communityId=${form.id})}"
+           class="btn btn-primary" role="button">수정</a>
+        <a href="#" th:if="${session.id=='1'}" th:href="@{/notice/{communityId}/delete (communityId=${form.id})}"
+           class="btn btn-primary" role="button">삭제</a>
+    </form>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

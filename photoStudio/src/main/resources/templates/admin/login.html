@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/aheader :: aheader" />
+<style>
+    .fieldError {
+        border-color: #bd2130;
+    }
+</style>
+<body>
+<div class="container">
+    <div th:replace="fragments/abodyHeader :: abodyHeader"/>
+    <form role="form" action="/admin/login" th:object="${adminLoginForm}"
+          method="post">
+        <div class="form-group">
+            <label th:for="email">이메일</label>
+            <!-- * 표시는 object를 참고한다. field는 id와 name 명을 자동으로 맞춰준다. -->
+            <input type="text" th:field="*{email}" class="form-control"
+                   placeholder="이메일을 입력하세요"
+                   th:class="${#fields.hasErrors('email')}? 'form-control
+                   fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}">Incorrect date</p>
+        </div>
+        <div class="form-group">
+            <label th:for="pwd">비밀번호</label>
+            <input type="password" th:field="*{pwd}" class="form-control"
+                   placeholder="비밀번호를 입력하세요"
+                   th:class="${#fields.hasErrors('pwd')}? 'form-control
+                   fieldError' : 'form-control'">
+            <p th:if="${#fields.hasErrors('pwd')}"
+               th:errors="*{pwd}">Incorrect date</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">로그인</button>
+    </form>
+    <br/>
+    <div th:replace="fragments/afooter :: afooter" />
+</div> <!-- /container -->
+</body>
+</html>

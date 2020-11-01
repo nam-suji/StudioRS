@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="my-4">
+    <form th:object="${form}" method="post">
+        <!-- id -->
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label th:for="email">제목</label>
+            <input type="text" th:field="*{title}" class="form-control"
+                   placeholder="제목을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label th:for="name">내용</label>
+            <textarea type="text" cols="80" rows="20" th:field="*{content}" class="form-control"
+                      placeholder="내용을 입력하세요"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

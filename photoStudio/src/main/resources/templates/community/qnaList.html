@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <div class="my-4">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 5%">no</th>
+                    <th scope="col" style="width: 50%">제목</th>
+                    <th scope="col" style="width: 15%">작성자</th>
+                    <th scope="col" style="width: 15%">날짜</th>
+                    <th style="width: 10%;"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="board : ${communities}">
+                    <th scope="row" th:text="${boardStat.index + 1}">1</th>
+                    <td th:text="${board.title}"></td>
+                    <td th:text="${board.name}"></td>
+                    <td th:text="${board.date}"></td>
+                    <td>
+                        <a href="#" th:href="@{/qna/{communityId} (communityId=${board.id})}"
+                           class="btn btn-primary" role="button">보기</a>
+                    </td>
+                </tr>
+                </tbody>
+
+
+            </table>
+            <!--           paging button-->
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/qna?page=1}" aria-label="Previous">
+                                <span aria-hidden="true">처음</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/qna?page={page} (page = ${pagination.prevBlock})}" aria-label="Previous">
+                                <span aria-hidden="true">이전</span>
+                            </a>
+                        </li>
+                        <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+                            <li class="page-item"
+                                th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+                                th:each="pageButton : ${#numbers.sequence(start, end)}">
+                                <a class="page-link" th:href="@{/qna?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
+                            </li>
+                        </th:block>
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/qna?page={page} (page = ${pagination.nextBlock})}" aria-label="Next">
+                                <span aria-hidden="true">다음</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" th:href="@{/qna?page={page} (page = ${pagination.totalPageCnt})}" aria-label="Previous">
+                                <span aria-hidden="true">끝</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button type="submit" th:if="${session.id!=null}" class="btn btn-primary" onclick="location.href='/qna/new'">작성</button>
+                        </li>
+                    </ul>
+                </nav>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>

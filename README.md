@@ -1,7 +1,7 @@
 ## 사용 기술  
  * 개발환경: IntelliJ
  * Server: Spring Boot 2.4.0, Java8, JPA, MariaDB, MySQL, Gradle, Lombok  
- * Design: BootStrap 
+ * Front: BootStrap, thyeleaf 
   
 ## 프로젝트 설명  
  * 소개: 사진관 예약 사이트  

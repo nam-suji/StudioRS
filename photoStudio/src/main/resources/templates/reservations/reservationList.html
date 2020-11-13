@@ -9,7 +9,6 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>사진관</th> <!--시연 끝나고 삭제-->
                     <th>상품명</th>
                     <th>가격</th>
                     <th>예약 날짜</th>
@@ -21,7 +20,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="reservation : ${reservations}">
-                    <td>우리동네 사진관</td> <!--시연 끝나고 삭제-->
                     <td th:text="${reservation.item.name}"></td>
                     <td th:text="${reservation.item.price}"></td>
                     <td th:text="${reservation.reservationDate}"></td>

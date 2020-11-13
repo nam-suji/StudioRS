@@ -8,14 +8,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Studio</th> <!--시연 끝나고 삭제-->
                 <th>상품명</th>
                 <th>가격</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="item : ${items}">
-                <td>우리동네 사진관</td> <!--시연 끝나고 삭제-->
                 <td th:text="${item.name}"></td>
                 <td th:text="${item.price}"></td>
             </tr>

@@ -12,5 +12,5 @@
    4. 클래스 다이어그램 설계
    5. 구현  
    
-## 구현 결과
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/73773320/99036077-5d0ec980-25c4-11eb-86d7-ed67cbd51471.gif)
+## 구현 결과  
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/73773320/99036647-6d737400-25c5-11eb-836d-18065f02cad2.gif)

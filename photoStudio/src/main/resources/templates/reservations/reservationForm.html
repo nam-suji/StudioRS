@@ -6,17 +6,6 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div class="my-4">
     <form role="form" action="/reservation" method="post">
-
-        <!--시연 끝나고 삭제-->
-        <div class="form-group">
-            <label>사진관명</label>
-            <select class="form-control">
-                <option value="">사진관선택</option>
-                <option>우리동네 사진관</option>
-            </select>
-        </div>
-
-
         <div class="form-group">
             <label for="item">상품명</label>
             <select name="itemId" id="item" class="form-control">
